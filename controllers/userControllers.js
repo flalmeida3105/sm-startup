@@ -15,10 +15,10 @@ const userController = {
 
     getSingleUser({ params }, res) {
         User.findOne({ _id: params.id })
-            // .populate({
-            //     path: "thoughts",
-            //     select: "-__v",
-            // })
+            .populate({
+                path: "thoughts",
+                select: "-__v",
+            })
             .select("-__v")
             .then((response) => res.json(response))
             .catch((err) => {
