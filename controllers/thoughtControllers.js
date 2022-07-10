@@ -1,5 +1,5 @@
 const { response } = require('express');
-const { Thought } = require('../models');
+const { Thought, User } = require('../models');
 
 const thoughtController = {
     getAllThoughts(req, res) {
@@ -40,9 +40,25 @@ const thoughtController = {
 
     createThought({ body }, res) {
         Thought.create(body)
-            .then(response => res.json(response))
-            .catch(err => res.status(400).json(err));
+            .then(({ _id }) => {
+                return User.findOneAndUpdate(
+                    { _id: body.userId },
+                    { $push: { thoughts: _id } },
+                    { new: true }
+                );
+            })
+            .then((response) => {
+                if (!response) {
+                    res.status(404).json({
+                        message: "No thought found with this id!",
+                    });
+                    return;
+                }
+                res.json(response);
+            })
+            .catch((err) => res.json(err));
     },
+
 
     deleteThought({ params }, res) {
         Thought.findOneAndDelete({ _id: params.id })
