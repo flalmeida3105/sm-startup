@@ -4,7 +4,8 @@ const {
     getAllUsers,
     getSingleUser,
     createUser,
-    deleteUser
+    deleteUser,
+    updateUser
 } = require('../../controllers/userControllers');
 
 router
@@ -16,6 +17,7 @@ router
     .route('/:id')
     .get(getSingleUser)
     .delete(deleteUser)
+    .put(updateUser)
 
 
 module.exports = router;
