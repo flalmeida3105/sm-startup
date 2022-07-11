@@ -32,7 +32,7 @@ The following languages were used to build this project.
  <img src="./assets/images/mydemo.gif" width="960" height="540"> 
 
 
-A full version of the live demo is available [here.](https://drive.google.com/drive/folders/1jrroJ5lwI1cAC3FsYz1tPOHDTmlTQJlp?usp=sharing)
+A full version of the live demo is available [here.](https://drive.google.com/file/d/1BhDqQllYKiAK2U9DtY2z6cANqcEqGuS6/view?usp=sharing)
 
 
 ## Setup
