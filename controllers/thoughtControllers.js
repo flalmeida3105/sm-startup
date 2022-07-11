@@ -67,17 +67,18 @@ const thoughtController = {
                     return;
                 }
                 return User.findOneAndUpdate(
-                    { _id: params.userId },
-                    { $pull: { thoughts: params.Id } },
+                    { userId: params.id },
+                    { $pull: { thoughts: params.id } },
                     { new: true }
                 )
             })
-            .then(dbUserData => {
-                if (!dbUserData) {
+            .then(response => {
+                console.log(response)
+                if (!response) {
                     res.status(404).json({ message: 'No User found!' });
                     return;
                 }
-                res.json(dbUserData);
+                res.json(response);
             })
             .catch(err => res.json(err));
     },
